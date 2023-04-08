@@ -47,53 +47,53 @@ require("config.php");
 	</style>
 </head>
 <body>
-	<?
+	<?php 
 	if (!isset($_REQUEST['i']) && count($defaultGraphs)>=1) {
 		foreach ($defaultGraphs as $thisGraph) {
-			?><img src="<?=$thisGraph?>" /><br /><?
+			?><img src="<?php echo $thisGraph?>" /><br /><?php 
 		}
-		?><br /><br /><?
+		?><br /><br /><?php 
 	}
 	?>
 	<form action=""><div id="optionsBox">
 		<div id="optionsTitle">vnStatGraphP Options</div><br />
 		<label class="optionName" for="iface">Interface:</label>
-		<span class="optionContainer"><select name="i" id="iface"><?
+		<span class="optionContainer"><select name="i" id="iface"><?php 
 		foreach ($ifaceList as $interface) {
 			$name = $interface;
 			if (!empty($ifaceTitles[$interface])) {
 				$name = $interface." - ".$ifaceTitles[$interface];
 			}
-			?><option value="<?=$interface?>"<?=($iface==$interface ? " selected" : "")?>><?=$name?></option><?
+			?><option value="<?php echo $interface?>"<?php echo ($iface==$interface ? " selected" : "")?>><?php echo $name?></option><?php 
 		}
 		?></select></span><br />
 	
 		<label class="optionName" for="graph">Graph:</label>
 		<span class="optionContainer"><select name="g" id="graph">
-			<option value="vs"<?=($graph=="vs" ? " selected" : "")?>>Vertical summary with hours</option>
-			<option value="hs"<?=($graph=="hs" ? " selected" : "")?>>Horizontal summary with hours</option>
-			<option value="s"<?=($graph=="s" ? " selected" : "")?>>Summary</option>
-			<option value="t"<?=($graph=="t" ? " selected" : "")?>>Top 10</option>
-			<option value="m"<?=($graph=="m" ? " selected" : "")?>>Months</option>
-			<option value="d"<?=($graph=="d" ? " selected" : "")?>>Days</option>
-			<option value="h"<?=($graph=="h" ? " selected" : "")?>>Hours</option>
+			<option value="vs"<?php echo ($graph=="vs" ? " selected" : "")?>>Vertical summary with hours</option>
+			<option value="hs"<?php echo ($graph=="hs" ? " selected" : "")?>>Horizontal summary with hours</option>
+			<option value="s"<?php echo ($graph=="s" ? " selected" : "")?>>Summary</option>
+			<option value="t"<?php echo ($graph=="t" ? " selected" : "")?>>Top 10</option>
+			<option value="m"<?php echo ($graph=="m" ? " selected" : "")?>>Months</option>
+			<option value="d"<?php echo ($graph=="d" ? " selected" : "")?>>Days</option>
+			<option value="h"<?php echo ($graph=="h" ? " selected" : "")?>>Hours</option>
 		</select></span><br />
 	
 		<label class="optionName" for="noHeader">No Header:</label>
-		<span class="optionContainer"><input type="checkbox" name="nh" id="noHeader"<?=($noHeader ? " checked" : "")?> /></span><br />
+		<span class="optionContainer"><input type="checkbox" name="nh" id="noHeader"<?php echo ($noHeader ? " checked" : "")?> /></span><br />
 	
 		<label class="optionName" for="noEdge">No Edge:</label>
-		<span class="optionContainer"><input type="checkbox" name="ne" id="noEdge"<?=($noEdge ? " checked" : "")?> /></span><br />
+		<span class="optionContainer"><input type="checkbox" name="ne" id="noEdge"<?php echo ($noEdge ? " checked" : "")?> /></span><br />
 	
 		<label class="optionName" for="noLegend">No Legend:</label>
-		<span class="optionContainer"><input type="checkbox" name="nl" id="noLegend"<?=($noLegend ? " checked" : "")?> /></span><br />
+		<span class="optionContainer"><input type="checkbox" name="nl" id="noLegend"<?php echo ($noLegend ? " checked" : "")?> /></span><br />
 	
 		<label class="optionName" for="rateUnit">Rate Unit:</label>
-		<span class="optionContainer"><input type="checkbox" name="ru" id="rateUnit"<?=($rateUnit ? " checked" : "")?> /></span> - Swap configured rate unit<br />
+		<span class="optionContainer"><input type="checkbox" name="ru" id="rateUnit"<?php echo ($rateUnit ? " checked" : "")?> /></span> - Swap configured rate unit<br />
 		<hr />
 		<input type="submit" value="Generate Graph" />
 	</div></form><br />
-	<?
+	<?php 
 	if (isset($_REQUEST['i']) || count($defaultGraphs)==0) {
 		$data = "i=".urlencode($iface);
 		$data .= "&g=".$graph;
@@ -110,7 +110,7 @@ require("config.php");
 			$data .= "&ru";
 		}
 		?>
-		<span id="vnStatResult"><img src="vnstati.php?<?=$data?>" /></span>
-	<?}?>
+		<span id="vnStatResult"><img src="vnstati.php?<?php echo $data?>" /></span>
+	<?php }?>
 </body>
 </html>

@@ -8,18 +8,18 @@
 //
 
 //List of interfaces configured for vnStat.
-$ifaceList = array("igb0");
+$ifaceList = array("ens3");
 //Optional readable title for interfaces.
-$ifaceTitles = array("igb0" => "External");
+$ifaceTitles = array("ens3" => "External");
 
 //Graphs to be shown on load of the index.
 $defaultGraphs = array(
-	"vnstati.php?i=igb0&g=vs",
-	"vnstati.php?i=igb0&g=d"
+	"vnstati.php?i=ens3&g=vs",
+	"vnstati.php?i=ens3&g=d"
 );
 
 //Location for the binary of vnStatI.
-$vnStatIBin = "/usr/local/bin/vnstati";
+$vnStatIBin = "/usr/bin/vnstati";
 
 //Get configuration from parameters.
 $iface = isset($_REQUEST['i']) ? $_REQUEST['i'] : "";
